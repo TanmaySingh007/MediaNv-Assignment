@@ -1,8 +1,11 @@
 import axios from 'axios';
 
 // Create axios instance with base URL
+// In production, use VITE_API_URL environment variable
+// For Vercel, set this in project settings
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+    baseURL: import.meta.env.VITE_API_URL || 
+             (import.meta.env.PROD ? 'https://your-backend-url.vercel.app/api' : 'http://localhost:5000/api'),
     headers: {
         'Content-Type': 'application/json',
     },
